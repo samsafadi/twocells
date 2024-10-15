@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.mypy]
+ignore_missing_imports = true
+check_untyped_defs = true
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[project]
+name = "twocells"
+version = "0.1.0"
+description = "A toy tensor library made using two brain cells"
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
