@@ -1,6 +1,6 @@
 # Twocells
 
-I wrote this basic tensor library for practice/fun after work. I use numpy as the base for my Tensor class and implemented autograd. As of right now I defined enough classes in order to train a simple MNIST fully-connected classifier.
+I wrote this toy tensor library for practice/fun after work. I use numpy as the base for my Tensor class and implemented autograd. As of right now I defined enough classes in order to train a simple MNIST fully-connected classifier.
 
 It has an SGD and Adam implementation as the optimizers and two loss functions.
 
