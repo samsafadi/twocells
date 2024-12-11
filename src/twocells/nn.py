@@ -93,3 +93,13 @@ class Softmax(Layer):
 
     def forward(self, x: Tensor) -> Tensor:
         return self.softmax(x, dim=self.dim)
+
+
+class Sigmoid(Layer):
+
+    def __init__(self):
+        super().__init__()
+        self.sigmoid = tensor.Sigmoid()
+        
+    def forward(self, x: Tensor) -> Tensor:
+        return self.sigmoid(x)

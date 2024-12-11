@@ -264,6 +264,18 @@ class Softmax(FunctionBase):
         x.backward(Tensor(grad_input))
 
 
+class Sigmoid(FunctionBase):
+    def forward(self, x: Tensor) -> Tensor:
+        assert x.dim == 1
+        s = Tensor(1 / (1 + np.exp(-x.data)))
+        self.save_vars({"x": x, "s": s})
+        return Tensor(s, self, x.requires_grad)
+
+    def backward(self, grad: Tensor) -> None:
+        x, s = self.saved_vars["x"], self.saved_vars["s"]
+        x.backward(Tensor((s.data * (np.ones_like(s.data) - s.data)) * grad.data))
+
+
 class Mean(FunctionBase):
     def forward(self, x: Tensor, axis: int | tuple[int] | None = None) -> Tensor:
         self.save_vars({"x": x, "axis": axis})
